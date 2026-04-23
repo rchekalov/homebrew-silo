@@ -35,15 +35,13 @@ class Silo < Formula
 
   def caveats
     <<~EOS
-      Add silo shims to your PATH:
-        export PATH="$HOME/.silo/bin:$PATH"
+      Add silo shims to your PATH (so `python`, `npm`, etc. route through silo):
+        eval "$(silo shellenv)"                              # current shell
+        echo 'eval "$(silo shellenv)"' >> ~/.zshrc           # permanent (zsh)
+        echo 'eval "$(silo shellenv)"' >> ~/.bashrc          # permanent (bash)
 
-      Silo requires the Apple Container CLI. Install it with:
-        brew install container
-
-      First `silo install` triggers a one-time runtime bootstrap (~5 minutes).
-      A prebuilt runtime bundle that cuts this to ~30s is tracked in the
-      project roadmap.
+      First `silo install` downloads a ~285 MB prebuilt runtime (one-time, ~30 seconds).
+      Without network access it falls back to building from source (~5 minutes).
     EOS
   end
 
