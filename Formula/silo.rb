@@ -1,14 +1,9 @@
-# Seed formula for the rchekalov/homebrew-silo tap.
+# Canonical formula for the rchekalov/homebrew-silo tap.
 #
-# Setup (one-time):
-#   1. Create the GitHub repo rchekalov/homebrew-silo (empty, public).
-#   2. Copy this file to Formula/silo.rb in that repo and push.
-#   3. Create a fine-grained GitHub token with contents:write on the tap repo,
-#      store it as TAP_GITHUB_TOKEN on this (main) repo under:
-#         Settings -> Secrets and variables -> Actions.
-#   4. Tag v0.4.0 (or later) on this repo.
-#      The release workflow builds + uploads a signed prebuilt tarball as a
-#      GitHub Release asset and auto-bumps version/url/sha256 here.
+# This file lives at scripts/homebrew/silo.rb in rchekalov/silo. On every
+# tagged release, .github/workflows/release.yml copies it into the tap's
+# Formula/silo.rb and seds in the real version/url/sha256 — so the tap is
+# always structurally in sync with source.
 #
 # Users install with (the three-part form avoids a name collision with
 # the homebrew-cask `silo` cask, which is an unrelated macOS app):
@@ -17,10 +12,10 @@
 class Silo < Formula
   desc "Run dev tools in isolated Apple Container VMs"
   homepage "https://github.com/rchekalov/silo"
-  url "https://github.com/rchekalov/silo/releases/download/v0.4.17/silo-0.4.17-macos-arm64.tar.gz"
-  sha256 "ba019b3a527086de10831016263fcc4f90b80388c0d803e267c0c1abd6d4f44d"
+  url "https://github.com/rchekalov/silo/releases/download/v0.4.18/silo-0.4.18-macos-arm64.tar.gz"
+  sha256 "a6120ac32bb745bac3d65304c75a346089a8fd9ff5d40a94cb4116488de9834b"
   license "Apache-2.0"
-  version "0.4.17"
+  version "0.4.18"
 
   depends_on :macos
   depends_on arch: :arm64
